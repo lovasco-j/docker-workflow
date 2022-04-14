@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t pluto84/docker-workflow .
+
+script:
+  - docker run -e CI=true pluto84/docker-workflow npm run test
